@@ -66,25 +66,10 @@ class MainActivity : AppCompatActivity(), OnClickListener {
 
     binding.onClick = this
     text = binding.sampleText
-    binding.sampleText.text = stringFromJNI()
     // Example of a call to a native method
     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
       requestPermissions(arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE,
           Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.RECORD_AUDIO), 100)
-    }
-  }
-
-  /**
-   * A native method that is implemented by the 'native-lib' native library,
-   * which is packaged with this application.
-   */
-  external fun stringFromJNI(): String
-
-  companion object {
-
-    // Used to load the 'native-lib' library on application startup.
-    init {
-      System.loadLibrary("native-lib")
     }
   }
 }
